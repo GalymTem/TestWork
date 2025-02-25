@@ -1,32 +1,29 @@
-Authors:
-Arsen Muzhikov,
-Anuar Shugay,
-Temirlan Galymtaev
+# Interactive Tutorials  
 
-## ADMIN USER
-username: arsen
-password: arsen
+Welcome to our website! This tutorial will guide you through the main features so you can easily navigate, search for games, check prices, and test your gaming knowledge. Our platform integrates the **RAWG API** and **Steam Store API** to provide up-to-date game information and pricing.  
 
-## DESCRIPTION
-Anime Watchlist is a web application that helps users keep track of their favorite anime series and movies. Users can add, update, and delete anime from their personal watchlist
-## PASSWORD HASHING
-we hashed passwords using bcrypt
-## Installation
+## 🚀 Navigation Overview  
+All functionalities are accessible through the navigation bar at the top of the page:  
 
-### 1. Create a new project folder
-### 2. Initialize the project
-### 3. Install dependencies
-npm install express 
-npm install ejs 
-npm install mongoose 
-npm install fs 
-npm install bcrypt 
-npm install axios 
-npm install bodyParser 
-npm install express-session
-### 4. If EJS fails to install
-If you encounter issues installing `ejs`, try installing it one directory above the folder containing `app.js`
+### 🏠 Home Page  
+Your starting point, featuring the latest updates.  
 
-## Project start
-To start the project just type "node app.js" inside the created folder
+### 🔎 Search for a Game  
+Find games using the **RAWG API**:  
+- Filter by genre: **Action, Adventure, or Strategy**.  
+- Search by name or browse all available games.  
 
+### 💰 Price Check  
+Using the **Steam Store API**, enter a **game ID** and a **country** to check its price across different regions.  
+
+### 🎮 Quiz  
+Challenge yourself with a **five-question timed quiz** on gaming facts.  
+
+### ⚙️ Admin Panel  
+Accessible only to **admins**, this section allows management of various site settings and content.  
+
+## 📡 Using API Features  
+- **Game Search:** Retrieves detailed game data from the **RAWG API**, including descriptions, genres, and release dates.  
+- **Price Check:** Fetches real-time game pricing from the **Steam Store API** based on game ID and country selection.  
+
+This tutorial ensures you can navigate the site effortlessly and take full advantage of its features. Enjoy exploring! 🚀  
