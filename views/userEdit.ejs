@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .UserFormBox {
+            display: flex;
+            width: 100px;
+            flex-justify: row;
+        }
+    </style>
+</head>
+<body>
+<%- include('partials/navbar') %>
+      <div class="UserFormBox">
+          <form id="UserForm" method="POST" action="/admin/editUser/<%= user.id %>">
+
+              <h1> <b> Edit User: </b> <%= user.username %> </h1>
+              <h2> Password: </h2>
+              <input type="text" id="password" name="password" placeholder="new password" required><hr>
+              <p> adminStatus:
+                   <input type="checkbox" id="toggle" name="adminStatus">
+              </p>
+              <button class="btn btn-primary" type="submit"> Edit </button>
+
+          </form>
+      </div>
+</div>
+</body>
+</html>

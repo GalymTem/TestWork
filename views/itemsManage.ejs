@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .body {
+
+        }
+        .ItemFormBox {
+            display: flex;
+            width: 0px;
+        }
+    </style>
+</head>
+<body>
+<%- include('partials/adminNavbar') %>
+
+      <h1 style="text-align: center;"> Items panel </h1>
+
+<div class="ItemFormBox">
+    <form id="itemForm" method="POST" action="/admin/addItem">
+        <h1><b>New Item</b></h1>
+
+        <label for="url1">first image:</label>
+        <input type="text" id="url1" name="url1" placeholder="url1" required>
+
+        <label for="url2">second image:</label>
+        <input type="text" id="url2" name="url2" placeholder="url2" required>
+
+        <label for="url3">third image:</label>
+        <input type="text" id="url3" name="url3" placeholder="url3" required>
+
+        <label for="name_ru">Name (Russian):</label>
+        <input type="text" id="name_ru" name="name_ru" placeholder="name in Russian" required>
+
+        <label for="name_en">Name (English):</label>
+        <input type="text" id="name_en" name="name_en" placeholder="name in English" required>
+
+        <label for="desc_ru">Description (Russian):</label>
+        <input type="text" id="desc_ru" name="desc_ru" placeholder="description in Russian" required>
+
+        <label for="desc_en">Description (English):</label>
+        <input type="text" id="desc_en" name="desc_en" placeholder="description in English" required>
+
+        <button type="submit">Create</button>
+    </form>
+</div>
+
+      <table class="table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th> first picture</th>
+            <th> second picture </th>
+            <th> third picture </th>
+            <th> name in russian </th>
+            <th> name in english </th>
+            <th> description in russian </th>
+            <th> description in english </th>
+          </tr>
+        </thead>
+        <tbody>
+            <% items.forEach(item => { %>
+            <tr>
+            <td> <%= item.itemId %> </td>
+            <td> <img src = "<%= item.url1 %>" width="50px" height="50px"> </td>
+            <td> <img src = "<%= item.url2 %>" width="50px" height="50px">  </td>
+            <td> <img src = "<%= item.url3 %>" width="50px" height="50px">  </td>
+            <td> <%= item.name_ru %> </td>
+            <td> <%= item.name_en %> </td>
+            <td> <%= item.desc_ru %> </td>
+            <td> <%= item.desc_en %> </td>
+            <td>
+                <form action="/admin/delItem/<%= item.id %>" method="POST">
+                   <button type="submit" class="btn btn-sm btn-danger"> Delete </button>
+                </form>
+            </td>
+            </tr>
+            <% }) %>
+        </tbody>
+      </table>
+    </div>
+</div>
+</body>
+</html>

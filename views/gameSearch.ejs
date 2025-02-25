@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Video Games</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <div class="container mt-5">
+        <h2> Search Video Games</h2>
+
+        <form action="/search/query/" method="POST" style="display: inline;">
+        <div>
+            <label>Search for a Game:</label>
+            <input type="text" name="search" id="search" placeholder="Enter game name">
+        </div>
+
+        <div>
+            <label for="genre">Select Genre:</label>
+            <select id="genre" name="genre" required>
+                <option value="none"> - </option>
+                <option value="action">Action</option>
+                <option value="adventure">Adventure</option>
+                <option value="strategy">Strategy</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-md btn-primary"> Search </button>
+
+      </form>
+
+      <h3>Results from RAWG:</h3>
+        <% if (rawgGames && rawgGames.length > 0) { %>
+            <ul class="list-group">
+                <% rawgGames.forEach(game => { %>
+                    <li class="list-group-item">
+                        <h5><%= game.name %></h5>
+                        <p>Release Date: <%= game.released %></p>
+                        <img src="<%= game.background_image %>" alt="<%= game.name %>" width="200px">
+                    </li>
+                <% }) %>
+            </ul>
+        <% } else { %>
+            <p>No results found from RAWG</p>
+        <% } %>
+        <h2> History </h2>
+   <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr>
+                <th> query</th>
+                <th> genre </th>
+                <th> when </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% queries.forEach(query => { %>
+            <tr>
+                <td><%= query.query %> </td>
+                <td><%= query.genre %> </td>
+                <td><%= query.when %> </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+</html>

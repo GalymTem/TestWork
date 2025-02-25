@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .body {
+
+        }
+        .ItemFormBox {
+            display: flex;
+            width: 0px;
+            flex-justify: row;
+        }
+    </style>
+</head>
+<body>
+<%- include('partials/adminNavbar') %>
+<h1 style="text-align: center;"> Quiz Panel </h1>
+<div class="container mt-5">
+  <div class="QuesFormBox">
+      <form id="QuesForm" method="POST" action="/admin/addQues">
+
+          <h1> <b> New question </b> </h1>
+          <input type="text" id="question" name="question" placeholder="question" required>
+          <input type="text" id="correct" name="correct" placeholder="correct option" required>
+          <input type="text" id="second" name="second" placeholder="second option" required>
+          <input type="text" id="third" name="third" placeholder="third option" required>
+          <input type="text" id="fourth" name="fourth" placeholder="fourth option" required>
+
+          <button type="submit"> Create </button>
+
+      </form>
+  </div>
+<div style="max-width: 800px; margin-left: 10px; padding: 20px;">
+    <h2>Manage questions </h2>
+    <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr>
+                <th> question </th>
+                <th> correct variant </th>
+                <th> second variant </th>
+                <th> third variant </th>
+                <th> fourth variant </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% questions.forEach(question => { %>
+            <tr>
+                <td><%= question.question %> </td>
+                <td><%= question.variantA %> </td>
+                <td><%= question.variantB %> </td>
+                <td><%= question.variantC %> </td>
+                <td><%= question.variantD %> </td>
+                <td>
+                    <form action="/admin/delQues/<%= question.id %>" method="POST">
+                       <button type="submit" class="btn btn-sm btn-danger"> Delete </button>
+                    </form>
+                </td>
+                <td>
+                     <a href="/admin/editQues/<%= question.id %>" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,32 @@
+{
+    "name": "assignment4-main",
+    "version": "1.0.0",
+    "engines": {
+        "node": ">=16"
+    },
+    "description": "Authors: Arsen Muzhikov, Anuar Shugay, Temirlan Galymtaev",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "dependencies": {
+        "ejs": "^3.1.9",
+        "express": "^4.21.2",
+        "axios": "^1.7.9",
+        "body-parser": "^2.1.0",
+        "mongoose": "^8.10.1",
+        "bcrypt": "^5.1.1",
+        "express-session": "^1.18.1",
+        "node-fetch": "^2.7.0",
+        "dotenv": "^16.4.7",
+        "morgan": "^1.10.0",
+        "jsonwebtoken": "^9.0.2",
+        "cookie-parser": "^1.4.7",
+        "multer": "^1.4.4",
+        "uuid": "^11.1.0",
+        "socket.io": "^4.8.1"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC"
+}

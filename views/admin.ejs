@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .body {
+
+        }
+        .ItemFormBox {
+            display: flex;
+            width: 0px;
+            flex-justify: row;
+        }
+        .welcomePageBox {
+            display: flex
+
+        }
+    </style>
+</head>
+<body>
+<%- include('partials/adminNavbar') %>
+<h1 style="text-align: center;"> Welcome page </h1>
+<div class="welcomeEdit">
+    <form action="/admin/editWelcome" method="POST">
+        <h2> Welcome description: </h2>
+        <textarea type="text" id="description" name="description" placeholder="Description" style="width: 100%; height: 100px;">
+        <%=desc%>
+        </textarea>
+        <hr>
+        <h2> Welcome Image: </h2>
+        <input type="text" id="url" value="<%=url%>" name="url" placeholder="url">
+        <hr>
+        <button type="submit" class="btn btn-md btn-primary"> Change </button>
+    </form>
+</div>
+<h1 style="text-align: center;">Admin Panel</h1>
+<div style="max-width: 800px; margin-left: 10px; padding: 20px;">
+    <h2>Manage Users</h2>
+    <table border="1" style="width: 100%; border-collapse: collapse; text-align: left;">
+        <thead>
+            <tr>
+                <th> userID</th>
+                <th> username</th>
+                <th> hash_password </th>
+                <th> creationDate </th>
+                <th> updateDate </th>
+                <th> deletionDate </th>
+                <th> adminStatus </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% users.forEach(user => { %>
+            <tr>
+                <td><%= user.userID %> </td>
+                <td><%= user.username %> </td>
+                <td><%= user.password %> </td>
+                <td><%= user.creationDate %> </td>
+                <td><%= user.updateDate %> </td>
+                <td><%= user.deletionDate %> </td>
+                <td><%= user.adminStatus %> </td>
+                <td>
+                    <form action="/admin/delete/<%= user._id %>" method="POST" style="display: inline;">
+                        <button type="submit"  class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+                <td>
+                     <a href="/admin/editUser/<%= user._id %>" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+            <% }); %>
+        </tbody>
+    </table>
+    <h3>Add New User</h3>
+    <form action="/admin/addUser" method="POST">
+        <input type="text" name="username" placeholder="Username" required>
+        <input type="password" name="password" placeholder="Password" required>
+
+    <span> admin: </span>
+    <input type="checkbox" id="toggle" name="adminStatus">
+        <p style="color: red"> <%= ERROR_LOG %> </p>
+        <button type="submit">Add User</button>
+    </form>
+
+</div>
+</body>
+</html>

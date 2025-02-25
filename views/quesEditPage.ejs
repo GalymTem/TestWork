@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .ItemFormBox {
+            display: flex;
+            width: 100px;
+            flex-justify: row;
+        }
+    </style>
+</head>
+<body>
+<%- include('partials/navbar') %>
+      <div class="QuesFormBox">
+          <form id="QuesForm" method="POST" action="/admin/editQues/<%= question.id %>">
+
+              <h1> <b> Edit question </b> </h1>
+              <input type="text" id="question" name="question" value="<%= question.question %>" placeholder="Question" required>
+              <input type="text" id="correct" name="correct" value="<%= question.correct %>" placeholder="Correct variant" required>
+              <input type="text" id="second" name="second" value="<%= question.second %>" placeholder="second variant" required>
+              <input type="text" id="third" name="third" value="<%= question.third %>" placeholder="third variant" required>
+              <input type="text" id="fourth" name="fourth" value="<%= question.fourth %>" placeholder="fourth variant" required>
+
+              <button class="btn btn-primary" type="submit"> Edit </button>
+
+          </form>
+      </div>
+</div>
+</body>
+</html>

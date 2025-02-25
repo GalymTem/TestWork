@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title> Preview </title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e9ecef;
+
+        }
+        .message {
+            width: 450px;
+            height: 340px;
+            background-color: #f4f4f4;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            box-sizing: border-box;
+            text-align: center;
+
+        }
+        .message button {
+            position: absolute;
+            top: 63%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80px;
+            height: 40px;
+        }
+        .warning {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+<%- include('partials/adminNavbar') %>
+<div class="message">
+    <h1> <strong> Quiz </strong> </h1>
+    <div class="warning">
+        <p> This quiz is based on the topic of video games. </p>
+        <p> You will be given 10 questions and 15 minutes to complete them. </p>
+        <p> Good luck! </p>
+    </div>
+    <button class="btn btn-md btn-success"> start </button>
+</div>
+</body>
+</html>

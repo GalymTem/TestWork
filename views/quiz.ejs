@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quiz</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script>
+        let timeLeft = 600;
+        function countdown() {
+            if (timeLeft <= 0) {
+                document.getElementById("quizForm").submit();
+            } else {
+                document.getElementById("timer").innerText = timeLeft;
+                timeLeft--;
+                setTimeout(countdown, 1000);
+            }
+        }
+
+        window.onload = countdown;
+    </script>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .container {
+        max-width: 500px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+        color: #333;
+    }
+
+    .question {
+        margin-bottom: 15px;
+    }
+
+    .btn {
+        display: inline-block;
+        background: #007bff;
+        color: white;
+        padding: 10px 20px;
+        text-decoration: none;
+        border-radius: 5px;
+    }
+
+    .btn:hover {
+        background: #0056b3;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2> Video Game Quiz</h2>
+        <p> Time left: <span id="timer">300</span> seconds</p>
+        <form id="quizForm" action="/quiz/submit" method="POST">
+            <% for(let i = 0;i < questions.length;i++) { %>
+                <div class="question">
+                    <h3><%= questions[i].question %></h3>
+                        <% variants[i].forEach(elem => { %>
+                            <label>
+                                <input type="radio" name="<%=i%>" value="<%=elem.index%>" required>
+                                <%= elem.variant %>
+                            </label>
+                    <% }) %>
+                </div>
+            <% } %>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
